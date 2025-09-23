@@ -1,0 +1,70 @@
+/* Basic Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #121213;
+  color: #ffffff;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+  gap: 5px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  gap: 5px;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+.tile {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #3a3a3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+  background-color: #121213;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Example colors for correct/incorrect guesses */
+.tile.correct {
+  background-color: #538d4e; /* Green */
+  border-color: #538d4e;
+  color: white;
+}
+
+.tile.present {
+  background-color: #b59f3b; /* Yellow */
+  border-color: #b59f3b;
+  color: white;
+}
+
+.tile.absent {
+  background-color: #3a3a3c; /* Gray */
+  border-color: #3a3a3c;
+  color: white;
+}
