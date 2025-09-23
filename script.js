@@ -2,7 +2,7 @@ const WORD_LENGTH = 5;
 const MAX_GUESSES = 6;
 
 let secretWord = "";
-let validWords = []; // All words from words.txt
+let validWords = []; // words loaded from words.txt
 let currentRow = 0;
 let currentTile = 0;
 let grid = document.querySelectorAll(".row .tile");
@@ -11,15 +11,15 @@ let grid = document.querySelectorAll(".row .tile");
 fetch("words.txt")
   .then(response => response.text())
   .then(text => {
-    // Split lines and uppercase
-    validWords = text.split("\n").map(word => word.trim().toUpperCase());
-
-    // Filter words of correct length
-    const wordLengthWords = validWords.filter(word => word.length === WORD_LENGTH);
+    // Split lines, remove empty lines, convert to uppercase
+    validWords = text
+      .split("\n")
+      .map(word => word.trim().toUpperCase())
+      .filter(word => word.length === WORD_LENGTH);
 
     // Pick a random secret word
-    secretWord = wordLengthWords[Math.floor(Math.random() * wordLengthWords.length)];
-    console.log("Secret Word:", secretWord);
+    secretWord = validWords[Math.floor(Math.random() * validWords.length)];
+    console.log("Secret Word:", secretWord); // Check in console
   })
   .catch(err => console.error("Failed to load words.txt", err));
 
